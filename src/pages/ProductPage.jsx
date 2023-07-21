@@ -9,7 +9,7 @@ export default function ProductPage(props) {
 
   function createCheckoutLink(productID) {
     setloading(true)
-    const url = "http://localhost:5000/create-checkout-link";
+    const url = "https://clashmarketplace-backend.onrender.com/create-checkout-link";
     const data = { 
       "product_id": productID,
       "Uid": props.uid
@@ -37,14 +37,10 @@ export default function ProductPage(props) {
       });
   }
 
-  const trigger_checkout = (id) => {
-    createCheckoutLink("product1");
-  };
-  
   
   const add_to_cart = (productID) => {
     setloading(true)
-    const url = "http://localhost:5000/cart/modify";
+    const url = "https://clashmarketplace-backend.onrender.com/cart/modify";
     const data = { 
       "user_id": props.uid,
       "cart_item": productID, 

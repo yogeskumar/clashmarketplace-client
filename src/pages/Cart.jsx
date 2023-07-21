@@ -7,7 +7,7 @@ export default function Cart(props) {
   let [Error,setError] = useState(false);
   useEffect(()=>{
     const Get_Cart = async ()=> {
-      const url = "http://localhost:5000/cart/get";
+      const url = "https://clashmarketplace-backend.onrender.com/cart/get";
       const data = { 
         "Uid":props.uid
        };

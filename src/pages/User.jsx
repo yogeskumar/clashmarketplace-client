@@ -20,7 +20,7 @@ let history = useNavigate()
         console.log("before profile fetch ",uid)
         try {
           const response = await fetch(
-            `http://127.0.0.1:5000/profile/${uid}`
+            `https://clashmarketplace-backend.onrender.com/profile/${uid}`
           ); // Replace with your API endpoint
           const jsonData = await response.json();
           console.log("Response:", jsonData);
@@ -28,7 +28,7 @@ let history = useNavigate()
           setIsLoading(false);
         } catch (error) {
           console.log("Error:", error);
-          console.log(`http://127.0.0.1:5000/profile/${uid}`);
+          console.log(`https://clashmarketplace-backend.onrender.com/profile/${uid}`);
           setIsLoading(false);
           setUnavailable(true);
         }

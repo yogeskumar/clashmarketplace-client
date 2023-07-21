@@ -75,7 +75,7 @@ export default function Admin(props) {
     formData.append("image1", file1);
     formData.append("image2", file2);
     
-    fetch(("http://127.0.0.1:5000/add_data"), {
+    fetch(("https://clashmarketplace-backend.onrender.com/add_data"), {
       method: "POST",
       body: formData,
     })
