@@ -26,7 +26,7 @@ function App() {
         console.log('uid set by saved id - ', savedUid);
         setUid(savedUid);
       }
-    }, []);
+  }, []);
 
   useEffect(() => {
     console.log("uid changed - ", uid);

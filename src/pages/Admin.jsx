@@ -16,6 +16,8 @@ export default function Admin(props) {
   const [ErrorText, setErrorText] = useState();
 
   const history = useNavigate();
+
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "title") {
