@@ -15,19 +15,56 @@ export default function Login({uid,setUid}) {
   var [SignUpPassword, setSignUpPassword] = useState("");
   
   let history = useNavigate()
-  const triggerRegister = (e) => {
+  const triggerRegister = async (e) => {
     e.preventDefault();
-    console.log(SignUpEmail, SignUpPassword);
-    let res = registerWithEmailAndPassword(name, SignUpEmail, SignUpPassword);
-    setUid(res);
-    history('/')
+    if ((SignUpEmail !== "") &&(name !== "")&&(SignUpPassword !== "")){
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (emailRegex.test(SignUpEmail)){
+        console.log(SignUpEmail, SignUpPassword);
+        let res = await registerWithEmailAndPassword(name, SignUpEmail, SignUpPassword);
+        if (typeof res === "string"){
+          setUid(res);
+          history('/')
+        }else{
+          alert('veriable not string type- it is '+(typeof res))
+        }
+      }
+      else{
+        alert("please use propper email")
+      }
+    }
+    else{
+      alert("please dont leave fields empty")
+    }
 };
-const triggerlogin = (e) => {
+const triggerlogin =async (e) => {
     e.preventDefault();
-    console.log(loginEmail, loginPassword);
-    let res = logInWithEmailAndPassword(loginEmail, loginPassword);
-    setUid(res);
-    history('/')
+    const email = "admin@clashmarketplace.com";
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  console.log(emailRegex.test(email))
+    if ((loginEmail !== "")&&(loginPassword !== "")){
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      let mail_conf = emailRegex.test(loginEmail)
+      if (mail_conf){
+        console.log(loginEmail, loginPassword);
+        let res = await logInWithEmailAndPassword(loginEmail, loginPassword);
+        if (typeof res === "string"){
+          setUid(res);
+          history('/')
+        }else{
+          alert('veriable not string type- it is '+(typeof res))
+          console.log(res)
+        }
+      }
+      else{
+        alert("please use propper email")
+        console.log(typeof loginEmail)
+      }
+    }
+    else{
+      alert("please dont leave fields empty")
+    }
   };
   const triggerGooglelogin = async () => {
     let res = await signInWithGoogle();
